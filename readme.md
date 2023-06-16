@@ -22,6 +22,16 @@ To run the script, execute the `main()` function. Adjust the environment variabl
 
 Please ensure that you have the required Python packages (`requests`, `psycopg2`, `dotenv`) installed before running the script.
 
+## Unit Tests
+
+The code includes a set of unit tests implemented using the Python `unittest` framework. These tests ensure the correctness of key functionalities within the data pipeline. Let's take a closer look at the unit tests and their purposes:
+
+- **`test_fetch_data_from_api_success`**: This test validates the `fetch_data_from_api()` function's ability to successfully retrieve data from the API. It uses a mocked HTTP response to simulate a successful API call and compares the returned data with the expected data.
+
+- **`test_create_users_table_success`**: This test verifies the `create_users_table()` function's capability to create the `users` table in the PostgreSQL database. It uses a mocked database cursor and checks if the SQL query for table creation is executed correctly.
+
+- **`test_verify_data_success`**: This test ensures the `verify_data()` function's correctness in verifying the data stored in the PostgreSQL database. It captures the standard output during the function's execution and compares it with the expected output.
+
 ## Requirements
 
 Before you begin, please make sure that you have the following installed:
