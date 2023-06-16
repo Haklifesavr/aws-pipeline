@@ -8,7 +8,7 @@ The provided code demonstrates a data pipeline built with Python and PostgreSQL.
 
 - **Fetching Data from the API**: The `fetch_data_from_api()` function retrieves data from an API (`https://random-data-api.com/api/v2/users`) using the `requests` library. It specifies the desired size of the data (100 records) through query parameters. If there is an error during the API request, an exception is raised and logged.
 
-- **Creating the Users Table**: The `create_users_table()` function creates a table named `users` in the PostgreSQL database if it doesn't already exist. It uses the `psycopg2` library and executes a SQL query to define the table schema. Any exceptions that occur during the table creation process are logged.
+- **Creating the Users Table**: The `create_users_table()` function creates a table named `users` in the PostgreSQL database if it doesn't already exist. It uses the `psycopg2` library and executes an SQL query to define the table schema. Any exceptions that occur during the table creation process are logged.
 
 - **Inserting Data into the Users Table**: The `insert_data_into_users_table()` function inserts the fetched data into the `users` table. It iterates over each item in the fetched data, extracts the required fields (country, name, surname, gender), and executes an SQL insert query to add the data to the table. If there are any exceptions during the data insertion, they are logged.
 
@@ -21,8 +21,6 @@ The script logs its execution events using the `logging` module, with logs being
 To run the script, execute the `main()` function. Adjust the environment variables in the `.env` file to match your PostgreSQL database configuration.
 
 Please ensure that you have the required Python packages (`requests`, `psycopg2`, `dotenv`) installed before running the script.
-
-
 
 ## Requirements
 
@@ -120,3 +118,17 @@ To handle the data pipeline using AWS Lambda, follow these steps:
 By following these steps, you can handle the data pipeline separately using Airflow and AWS Lambda. Adjust the configurations, code, and triggers based on your specific requirements and environment.
 
 Please make sure to adjust the content and instructions according to your specific project requirements.
+
+## Code References
+
+If you're looking for more examples or references on building data pipelines with Python and working with PostgreSQL, you may find the following resources helpful:
+
+- [Python `requests` Library Documentation](https://docs.python-requests.org/en/latest/) - Official documentation for the `requests` library, which is used for making HTTP requests and fetching data from APIs.
+
+- [Psycopg - PostgreSQL Adapter for Python](https://www.psycopg.org/docs/) - Official documentation for Psycopg, the PostgreSQL adapter for Python. It provides detailed information on how to work with PostgreSQL databases using Python.
+
+- [Apache Airflow Documentation](https://airflow.apache.org/docs/) - Official documentation for Apache Airflow, an open-source platform for programmatically authoring, scheduling, and monitoring workflows. It provides extensive guidance on setting up and managing data pipelines.
+
+- [AWS Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) - Official developer guide for AWS Lambda, offering in-depth information on creating, configuring, and deploying serverless functions using AWS Lambda.
+
+Feel free to explore these resources to deepen your understanding and find additional examples to enhance your data pipeline implementation.
