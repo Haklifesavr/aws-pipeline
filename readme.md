@@ -43,7 +43,7 @@ Before you begin, please make sure that you have the following installed:
 
 1. Clone this repository:
 
-   
+   ```bash
    git clone <repository_url>
 
 2. Initializing a virtual environment:
