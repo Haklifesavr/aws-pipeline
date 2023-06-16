@@ -9,20 +9,56 @@ Before you begin, please make sure that you have the following installed:
 - Python 3.6 or higher
 - PostgreSQL server
 
-And the following Python packages:
+## Getting Started
 
-- `requests`
-- `psycopg2`
-- `python-dotenv`
+1. Clone this repository:
 
-You can install these Python packages using pip:
+   
+   git clone <repository_url>
 
-```sh
-pip install requests psycopg2 python-dotenv
+2. Initializing a virtual environment:
 
-## How to Use
+    ```bash
+    python -m venv .venv
 
-1. Clone the repository:
+3. Activating the virtual environment:
 
-```sh
-git clone https://github.com/your/repository.git
+* For Windows
+    ```bash
+    cd .venv/scripts
+    .\activate
+
+* For MacOS
+    ```bash
+    source .venv/bin/activate
+
+4. Activating the virtual environment:
+
+    ```bash
+    cd .venv/scripts
+    .\activate
+
+5. Installing requirements:
+
+    ```bash
+    pip install -r requirements.txt
+
+6. Running the main pipeline:
+
+    ```bash
+    python main.py
+
+7. Running the unit tests:
+
+    ```bash
+    python -m unittest discover -s . -p "*tests.py"
+
+8. Running the entire project at once:
+* For Windows:
+    ```bash
+    .\run.bat
+
+* For MacOS:
+    ```bash
+    chmod +x run.sh
+    ./run.sh
