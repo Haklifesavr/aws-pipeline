@@ -2,6 +2,28 @@
 
 This project showcases a straightforward data pipeline that fetches data from an API, inserts the data into a PostgreSQL database, and verifies the data. The pipeline is built using Python, and specifically makes use of the `requests` and `psycopg2` libraries.
 
+## Code Overview
+
+The provided code demonstrates a data pipeline built with Python and PostgreSQL. Here's an overview of the different components and their functionalities:
+
+- **Fetching Data from the API**: The `fetch_data_from_api()` function retrieves data from an API (`https://random-data-api.com/api/v2/users`) using the `requests` library. It specifies the desired size of the data (100 records) through query parameters. If there is an error during the API request, an exception is raised and logged.
+
+- **Creating the Users Table**: The `create_users_table()` function creates a table named `users` in the PostgreSQL database if it doesn't already exist. It uses the `psycopg2` library and executes a SQL query to define the table schema. Any exceptions that occur during the table creation process are logged.
+
+- **Inserting Data into the Users Table**: The `insert_data_into_users_table()` function inserts the fetched data into the `users` table. It iterates over each item in the fetched data, extracts the required fields (country, name, surname, gender), and executes an SQL insert query to add the data to the table. If there are any exceptions during the data insertion, they are logged.
+
+- **Verifying Data**: The `verify_data()` function selects and displays the first 100 rows from the `users` table to verify the data stored in the PostgreSQL database. Any exceptions that occur during the verification process are logged.
+
+- **Main Entry Point**: The `main()` function serves as the main entry point of the script. It establishes a connection to the PostgreSQL database using the provided environment variables (`host`, `port`, `database`, `user`, `password`). The script then fetches data from the API, creates the `users` table (if necessary), inserts the fetched data into the table, and verifies the data. Any exceptions that occur during the process are logged.
+
+The script logs its execution events using the `logging` module, with logs being written to the `script.log` file. Environment variables are loaded from a `.env` file using the `dotenv` library.
+
+To run the script, execute the `main()` function. Adjust the environment variables in the `.env` file to match your PostgreSQL database configuration.
+
+Please ensure that you have the required Python packages (`requests`, `psycopg2`, `dotenv`) installed before running the script.
+
+
+
 ## Requirements
 
 Before you begin, please make sure that you have the following installed:
@@ -62,3 +84,39 @@ Before you begin, please make sure that you have the following installed:
     ```bash
     chmod +x run.sh
     ./run.sh
+
+## Scaling the Pipeline with Airflow
+
+To handle the data pipeline using Airflow, follow these steps:
+
+1. Install Apache Airflow in your preferred environment.
+
+2. Define a DAG (Directed Acyclic Graph) that represents your data pipeline. This can be done by creating a Python file with the necessary configurations.
+
+3. Set up tasks within the DAG to perform specific actions. For example, create tasks to fetch data from the API, insert data into the PostgreSQL database, and verify the data.
+
+4. Configure the dependencies between tasks using operators such as `BashOperator`, `PythonOperator`, or custom operators. This ensures that tasks are executed in the correct order.
+
+5. Schedule the DAG to run periodically or based on specific events using the Airflow scheduler. Define the schedule interval or use external triggers to start the pipeline.
+
+6. Monitor and manage pipeline execution using the Airflow UI or command-line interface. View logs, track task status, and troubleshoot any issues that may arise.
+
+## Scaling the Pipeline with AWS Lambda
+
+To handle the data pipeline using AWS Lambda, follow these steps:
+
+1. Create an AWS Lambda function using the AWS Management Console or AWS CLI.
+
+2. Write the necessary code within the Lambda function to fetch data from the API, insert it into the PostgreSQL database, and verify the data. This code can be written in Python and should utilise the `requests` and `psycopg2` libraries.
+
+3. Set up appropriate triggers for the Lambda function. This can be achieved using AWS EventBridge, CloudWatch Events, or other event-driven mechanisms. Configure the triggers to execute the Lambda function at the desired interval or based on specific events.
+
+4. Package the Lambda function code along with the required dependencies (e.g. `requests` and `psycopg2`). Create a deployment package that can be uploaded to AWS Lambda.
+
+5. Configure the necessary environment variables for the Lambda function, including the database connection details and API credentials.
+
+6. Monitor the Lambda function execution using AWS CloudWatch logs. View logs, track errors, and analyse the execution duration.
+
+By following these steps, you can handle the data pipeline separately using Airflow and AWS Lambda. Adjust the configurations, code, and triggers based on your specific requirements and environment.
+
+Please make sure to adjust the content and instructions according to your specific project requirements.
